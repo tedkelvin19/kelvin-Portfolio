@@ -1,70 +1,130 @@
-# Getting Started with Create React App
+# 🚀 Ted Kelvin Mutwiri — Personal Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> A modern, dark-themed personal portfolio website built with React JS, showcasing the work, skills, and journey of Ted Kelvin Mutwiri — a Software Engineer based in Nairobi, Kenya.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 📖 Portfolio Description
 
-### `npm start`
+**Ted Kelvin Mutwiri** is a passionate Software Engineer and ICT graduate with a strong foundation in full-stack web development, system analysis, and network management. This portfolio is a digital reflection of his technical journey — from completing a Diploma in Information and Communication Technology at Orthodox College of Africa to earning a Software Engineering certification at Moringa School.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Built with a sleek, dark luxury aesthetic inspired by his personal brand colors — electric blue, purple, and magenta — the portfolio presents Ted's story with precision and personality. Visitors can explore his featured projects, track his educational timeline, assess his technical proficiency, and get in touch directly through the site.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Whether you're a recruiter, collaborator, or fellow developer, this portfolio is designed to give you a complete and compelling picture of what Ted brings to the table.
 
-### `npm test`
+Ted is currently working as an **IT Support Intern at Craft Legacy Limited** (Nairobi, November 2025 – Present), where he is gaining hands-on experience in database systems monitoring, software configuration, technical support, and solution demonstrations across enterprise environments.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## ✨ Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Animated Hero Section** — Morphing blob layout with a floating profile image and stat counters
+- **About Me** — Personal bio, contact details, and tech stack tags
+- **Experience Section** — Detailed work card for Craft Legacy Limited with role tags, bullet points, and skill badges; plus volunteer work cards
+- **Skill Bars** — Scroll-triggered animated progress bars reflecting real proficiency levels
+- **Project Showcase** — Cards for all featured projects with descriptions and tech stack labels
+- **Education Timeline** — A chronological visual timeline of academic milestones
+- **Achievement Badge** — AfricaHackon Cloud Security Masterclass 2023 certificate highlight
+- **Contact Form** — A fully styled contact form with email, phone, and location info
+- **Responsive Navigation** — Sticky glassmorphism navbar with smooth scroll
+- **Custom Branding** — Personal "K" logo integrated throughout
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🛠️ Tech Stack
 
-### `npm run eject`
+| Layer | Technology |
+|---|---|
+| Framework | React JS |
+| Styling | Tailwind CSS + Custom CSS |
+| Fonts | Playfair Display, DM Sans (Google Fonts) |
+| Animations | CSS Keyframes + IntersectionObserver API |
+| Images | Base64 embedded (no external hosting required) |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📁 Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+portfolio/
+├── portfolio.jsx        # Main React component (single-file)
+├── README.md            # Project documentation
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🚀 Getting Started
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Prerequisites
+- Node.js v16+
+- A React project with Tailwind CSS configured
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Installation
 
-### Code Splitting
+```bash
+# Clone or copy portfolio.jsx into your React project's src folder
+cp portfolio.jsx src/App.jsx
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Install dependencies if not already present
+npm install
 
-### Analyzing the Bundle Size
+# Start the development server
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Deploy to Vercel (recommended)
 
-### Making a Progressive Web App
+```bash
+npm install -g vercel
+vercel
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Deploy to Netlify
 
-### Advanced Configuration
+```bash
+npm run build
+# Drag and drop the /build folder into Netlify's dashboard
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 🎨 Design Philosophy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+The portfolio embraces a **dark luxury tech aesthetic** — a deliberate choice to reflect the precision and sophistication that Ted brings to his work. Key design decisions include:
 
-### `npm run build` fails to minify
+- **Color palette** drawn from his personal "K" logo — electric blue (`#3b82f6`), violet (`#a855f7`), and magenta (`#ec4899`)
+- **Playfair Display** for headings — authoritative and refined
+- **DM Sans** for body text — clean, modern, and highly legible
+- **Gradient mesh orbs** and a CSS grid background for depth and atmosphere
+- **Scroll-triggered animations** to reveal content progressively and keep users engaged
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## 📬 Contact
+
+| | |
+|---|---|
+| **Email** | tedkelvin19@gmail.com |
+| **Phone** | 0794512524 |
+| **Location** | Nairobi, Kenya |
+
+---
+
+## 📄 References
+
+- **Mr. Brian Obunga** — HOD ICT, Orthodox College of Africa · `0712823022`
+- **Kagume Maina Chiuri** — Head of Integrated Sales, Maersk · kagumechiuri@gmail.com
+- **Edina Gatwiri Karuri** — Administration Secretary, Getso Consultants Ltd · gatwirikaruri@gmail.com
+
+---
+
+## 📜 License
+
+This project is personal and proprietary. All rights reserved © 2024 Ted Kelvin Mutwiri.
+
+---
+
+<div align="center">
+  <p>Designed & Built by <strong>Ted Kelvin Mutwiri</strong> 🇰🇪</p>
+  <p><em>"Eager to apply academic knowledge and technical skills to real-world challenges in a dynamic and growth-oriented environment."</em></p>
+</div>
