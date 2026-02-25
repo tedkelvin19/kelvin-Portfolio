@@ -46,8 +46,8 @@ Ted is currently working as an **IT Support Intern at Craft Legacy Limited** (Na
 ## 📁 Project Structure
 
 ```
-portfolio/
-├── portfolio.jsx        # Main React component (single-file)
+kelvin-portfolio/src
+├── App.jsx        # Main React component (single-file)
 ├── README.md            # Project documentation
 ```
 
@@ -63,7 +63,7 @@ portfolio/
 
 ```bash
 # Clone or copy portfolio.jsx into your React project's src folder
-cp portfolio.jsx src/App.jsx
+cp kelvin-portfolio/src/App.jsx
 
 # Install dependencies if not already present
 npm install
@@ -79,11 +79,12 @@ npm install -g vercel
 vercel
 ```
 
-### Deploy to Netlify
+### Deploy to Vercel
 
 ```bash
 npm run build
-# Drag and drop the /build folder into Netlify's dashboard
+# Drag and drop the /build folder into vercel dashboard
+# import from github account
 ```
 
 ---
@@ -107,6 +108,7 @@ The portfolio embraces a **dark luxury tech aesthetic** — a deliberate choice 
 | **Email** | tedkelvin19@gmail.com |
 | **Phone** | 0794512524 |
 | **Location** | Nairobi, Kenya |
+| **Website** | (https://kelvin-portfolio-hucb-git-main-ted-kelvins-projects.vercel.app/) |
 
 ---
 
