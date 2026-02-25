@@ -24,8 +24,9 @@ const PROJECTS = [
   {
     title: "Personal Portfolio",
     desc: "A responsive personal portfolio website showcasing education, skills and projects, built with modern web technologies.",
-    tech: ["HTML", "CSS", "JavaScript"],
+    tech: ["HTML", "CSS", "JavaScript","React"],
     icon: "🗂️",
+    link: "https://kelvin-portfolio-hucb-git-main-ted-kelvins-projects.vercel.app/"
   },
   {
     title: "Auto Car Dealer",
