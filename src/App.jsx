@@ -48,7 +48,7 @@ const EDUCATION = [
   { year: "2005–2014", degree: "Kenya Certificate of Primary Education", school: "St. Paul's Mbuvori Primary School" },
   { year: "2015–2018", degree: "Kenya Certificate of Secondary Education", school: "King David High School – Kamama" },
   { year: "2019", degree: "International Computer Driving License (ICDL)", school: "PC Kinyanjui Technical Institute" },
-  { year: "2019–2022", degree: "Diploma in ICT", school: "Orthodox College of Africa" },
+  { year: "2019–2022", degree: "Diploma in Information Communication & Technology", school: "Orthodox College of Africa" },
   { year: "2023–2024", degree: "Software Engineering", school: "Moringa School" },
 ];
 
