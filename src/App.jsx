@@ -24,7 +24,7 @@ const PROJECTS = [
   {
     title: "Personal Portfolio",
     desc: "A responsive personal portfolio website showcasing education, skills and projects, built with modern web technologies.",
-    tech: ["HTML", "CSS", "JavaScript","React"],
+    tech: ["HTML", "CSS", "JavaScript"],
     icon: "🗂️",
   },
   {
@@ -32,6 +32,14 @@ const PROJECTS = [
     desc: "A comprehensive vehicle sales platform with advanced search filters, JSON-powered database, customer review system, and full-stack React integration.",
     tech: ["React JS", "JSON", "Flask"],
     icon: "🚗",
+  },
+  {
+    title: "EasyBank",
+    desc: "A next-generation digital banking landing page featuring a sleek dark UI, animated credit card visuals, and sections for Features, Transactions, Blog, and Accounts. Designed to deliver a premium fintech experience.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    icon: "🏦",
+    badge: "New",
+    link: "https://banker-app-sigma.vercel.app/",
   },
 ];
 
@@ -82,6 +90,21 @@ export default function Portfolio() {
   const [active, setActive] = useState("Home");
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [sent, setSent] = useState(false);
+
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = () => {
+    if (!form.name || !form.email || !form.message) {
+      alert("Please fill in your name, email, and message.");
+      return;
+    }
+    const mailto = `mailto:tedkelvin19@gmail.com?subject=${encodeURIComponent(form.subject || "Portfolio Enquiry")}&body=${encodeURIComponent("Name: " + form.name + "\nEmail: " + form.email + "\n\n" + form.message)}`;
+    window.open(mailto);
+    setSent(true);
+    setTimeout(() => setSent(false), 4000);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -91,7 +114,11 @@ export default function Portfolio() {
 
   const scrollTo = (id) => {
     const el = document.getElementById(id.toLowerCase());
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) {
+      const navHeight = 70;
+      const top = el.getBoundingClientRect().top + window.scrollY - navHeight;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
     setActive(id);
     setMenuOpen(false);
   };
@@ -359,21 +386,44 @@ export default function Portfolio() {
             <div style={{ color: "#60a5fa", fontSize: "0.82rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 12 }}>Work</div>
             <h2 className="section-title"><span className="gradient-text">Featured Projects</span></h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 28 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 28 }}>
             {PROJECTS.map((p, i) => (
               <div key={p.title} className="card-hover" style={{
                 background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(59,130,246,0.15)",
+                border: `1px solid ${p.badge ? "rgba(168,85,247,0.35)" : "rgba(59,130,246,0.15)"}`,
                 borderRadius: 20,
                 padding: 28,
-                transition: "all 0.3s"
+                transition: "all 0.3s",
+                position: "relative",
+                overflow: "hidden",
               }}>
+                {p.badge && (
+                  <div style={{ position: "absolute", top: 16, right: 16, background: "linear-gradient(135deg,#7c3aed,#ec4899)", borderRadius: 999, padding: "3px 12px", fontSize: "0.7rem", fontWeight: 700, color: "white", letterSpacing: "0.06em" }}>
+                    ✦ {p.badge}
+                  </div>
+                )}
                 <div style={{ fontSize: "2.5rem", marginBottom: 18 }}>{p.icon}</div>
                 <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.3rem", fontWeight: 700, color: "#e2e8f0", marginBottom: 12 }}>{p.title}</h3>
                 <p style={{ color: "#94a3b8", fontSize: "0.88rem", lineHeight: 1.75, marginBottom: 20 }}>{p.desc}</p>
-                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: p.link ? 20 : 0 }}>
                   {p.tech.map(t => <span key={t} className="tag">{t}</span>)}
                 </div>
+                {p.link && (
+                  <a href={p.link} target="_blank" rel="noopener noreferrer" style={{
+                    display: "inline-flex", alignItems: "center", gap: 6,
+                    background: "linear-gradient(135deg, rgba(59,130,246,0.15), rgba(168,85,247,0.15))",
+                    border: "1px solid rgba(168,85,247,0.4)",
+                    borderRadius: 999, padding: "7px 16px",
+                    fontSize: "0.78rem", fontWeight: 600, color: "#c4b5fd",
+                    textDecoration: "none", transition: "all 0.2s",
+                    letterSpacing: "0.03em",
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.background="linear-gradient(135deg,rgba(59,130,246,0.3),rgba(168,85,247,0.3))"; e.currentTarget.style.color="#e2e8f0"; }}
+                  onMouseLeave={e => { e.currentTarget.style.background="linear-gradient(135deg,rgba(59,130,246,0.15),rgba(168,85,247,0.15))"; e.currentTarget.style.color="#c4b5fd"; }}
+                  >
+                    <span>🔗</span> View Live Site
+                  </a>
+                )}
               </div>
             ))}
           </div>
@@ -424,12 +474,19 @@ export default function Portfolio() {
           <p style={{ color: "#94a3b8", marginBottom: 48, fontSize: "1rem" }}>Have a project in mind? I'd love to hear about it. Send me a message and I'll get back to you as soon as possible.</p>
           
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 20 }}>
-            <input className="contact-input" type="text" placeholder="Your Name" />
-            <input className="contact-input" type="email" placeholder="Your Email" />
+            <input className="contact-input" type="text" name="name" placeholder="Your Name" value={form.name} onChange={handleChange} />
+            <input className="contact-input" type="email" name="email" placeholder="Your Email" value={form.email} onChange={handleChange} />
           </div>
-          <input className="contact-input" type="text" placeholder="Subject" style={{ marginBottom: 20, display: "block" }} />
-          <textarea className="contact-input" rows={5} placeholder="Your message..." style={{ marginBottom: 28, resize: "none", display: "block" }} />
-          <button className="btn-primary" style={{ width: "100%", padding: "15px" }}>Send Message ✉️</button>
+          <input className="contact-input" type="text" name="subject" placeholder="Subject" value={form.subject} onChange={handleChange} style={{ marginBottom: 20, display: "block" }} />
+          <textarea className="contact-input" rows={5} name="message" placeholder="Your message..." value={form.message} onChange={handleChange} style={{ marginBottom: 28, resize: "none", display: "block" }} />
+          {sent && (
+            <div style={{ marginBottom: 16, padding: "12px 20px", background: "rgba(74,222,128,0.1)", border: "1px solid rgba(74,222,128,0.3)", borderRadius: 10, color: "#4ade80", fontSize: "0.88rem", textAlign: "center" }}>
+              ✅ Opening your email client... Thanks for reaching out, {form.name}!
+            </div>
+          )}
+          <button className="btn-primary" onClick={handleSubmit} style={{ width: "100%", padding: "15px", opacity: sent ? 0.7 : 1 }}>
+            {sent ? "Message Ready ✓" : "Send Message ✉️"}
+          </button>
           
           <div style={{ display: "flex", justifyContent: "center", gap: 32, marginTop: 48, flexWrap: "wrap" }}>
             {[["📧", "tedkelvin19@gmail.com"], ["📞", "0794512524"], ["📍", "Nairobi, Kenya"]].map(([icon, val]) => (
