@@ -29,10 +29,11 @@ const PROJECTS = [
     link: "https://kelvin-portfolio-hucb-git-main-ted-kelvins-projects.vercel.app/"
   },
   {
-    title: "Auto Car Dealer",
-    desc: "A comprehensive vehicle sales platform with advanced search filters, JSON-powered database, customer review system, and full-stack React integration.",
-    tech: ["React JS", "JSON", "Flask"],
+    title: "AutoElite Premium Car Dealer",
+    desc: "A premium car dealership web application that offers a curated collection of vehicles. Built with vanilla HTML, CSS, and JavaScript, backed by a live REST API deployed on Render.",
+    tech: ["HTML", "JSON", "CSS","Api"],
     icon: "🚗",
+    link: "https://phase-1-independent-project-rho.vercel.app/"
   },
   {
     title: "EasyBank",
