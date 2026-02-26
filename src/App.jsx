@@ -37,10 +37,18 @@ const PROJECTS = [
   {
     title: "EasyBank",
     desc: "A next-generation digital banking landing page featuring a sleek dark UI, animated credit card visuals, and sections for Features, Transactions, Blog, and Accounts. Designed to deliver a premium fintech experience.",
-    tech: ["HTML", "CSS", "JavaScript"],
+    tech: ["HTML", "CSS", "React","Api"],
     icon: "🏦",
     badge: "New",
     link: "https://banker-app-sigma.vercel.app/",
+  },
+  {
+    title: "FarmArt",
+    desc: "A farm-to-buyer marketplace where farmers sell animals directly to buyers — no middlemen involved. Features animal listings, cart, checkout, user authentication, and an upload system for sellers.",
+    tech: ["HTML", "CSS", "React","Django","Api"],
+    icon: "🐄",
+    badge: "New",
+    link: "https://farmart-app.vercel.app/",
   },
 ];
 
