@@ -175,6 +175,89 @@ export default function Portfolio() {
         .contact-input { width: 100%; background: rgba(255,255,255,0.05); border: 1.5px solid rgba(59,130,246,0.2); border-radius: 10px; padding: 12px 16px; color: #e2e8f0; font-family: inherit; font-size: 0.9rem; transition: border-color 0.2s; }
         .contact-input:focus { border-color: #3b82f6; }
         .contact-input::placeholder { color: #475569; }
+
+        /* Human-first refinements */
+        .nav-links { display: flex; gap: 4px; }
+        .menu-toggle { display: none; }
+        button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
+        button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid #60a5fa; outline-offset: 3px; }
+        .hero-frame { box-shadow: 0 18px 55px rgba(0,0,0,0.28); }
+        .card-hover { border-radius: 14px !important; }
+        .tag { border-radius: 6px; padding: 5px 9px; }
+        .btn-primary, .btn-outline { border-radius: 8px; min-height: 46px; }
+        .btn-primary:hover, .btn-outline:hover { transform: translateY(-2px); }
+        .section-title { letter-spacing: -0.025em; }
+
+        @media (max-width: 900px) {
+          .hero-section { min-height: auto !important; padding-top: 112px !important; padding-bottom: 72px !important; }
+          .hero-grid, .about-grid { grid-template-columns: 1fr !important; gap: 52px !important; }
+          .hero-grid > div:first-child { max-width: 680px; }
+          .hero-visual { justify-content: flex-start !important; padding-left: 2px; }
+          .hero-frame-wrap { margin: 0 auto; }
+          .skills-grid, .projects-grid { grid-template-columns: 1fr !important; }
+          .volunteer-grid { grid-template-columns: 1fr !important; }
+          .form-row { grid-template-columns: 1fr !important; }
+          .content-section { padding-top: 76px !important; padding-bottom: 76px !important; }
+        }
+
+        @media (max-width: 700px) {
+          nav { padding: 12px 20px !important; }
+          .nav-links { display: none; position: absolute; top: calc(100% + 8px); left: 16px; right: 16px; padding: 10px; flex-direction: column; gap: 3px; background: rgba(7,11,24,0.98); border: 1px solid rgba(96,165,250,0.16); border-radius: 12px; box-shadow: 0 18px 45px rgba(0,0,0,0.35); }
+          .nav-links.open { display: flex; }
+          .nav-link { width: 100%; min-height: 44px; text-align: left; padding: 10px 12px; border-radius: 7px; }
+          .menu-toggle { width: 44px; height: 44px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; background: transparent; border: 1px solid rgba(148,163,184,0.2); border-radius: 8px; cursor: pointer; }
+          .menu-toggle span { width: 19px; height: 2px; background: #cbd5e1; border-radius: 2px; transition: transform .2s, opacity .2s; }
+          .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+          .menu-toggle.open span:nth-child(2) { opacity: 0; }
+          .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+          .hero-section { padding: 104px 20px 64px !important; }
+          .content-section { padding-left: 20px !important; padding-right: 20px !important; }
+          .hero-grid { gap: 44px !important; }
+          .hero-grid h1 { font-size: clamp(2.55rem, 14vw, 4rem) !important; line-height: 1.02 !important; margin-bottom: 20px !important; }
+          .hero-grid p { font-size: 0.98rem !important; line-height: 1.7 !important; margin-bottom: 28px !important; }
+          .hero-actions { width: 100%; gap: 10px !important; }
+          .hero-actions button { flex: 1 1 160px; }
+          .hero-stats { gap: 18px !important; margin-top: 34px !important; flex-wrap: wrap; }
+          .hero-stats > div { min-width: 82px; }
+          .hero-stats > div > div:first-child { font-size: 1.65rem !important; }
+          .hero-frame-wrap { width: min(100%, 320px); }
+          .hero-frame { width: min(100%, 300px) !important; height: 385px !important; margin: 0 auto; }
+          .location-badge { top: -8px !important; right: -4px !important; padding: 8px 11px !important; font-size: 0.7rem !important; }
+          .availability-badge { bottom: 12px !important; left: -4px !important; padding: 8px 11px !important; font-size: 0.7rem !important; }
+          .section-title { font-size: clamp(1.9rem, 9vw, 2.7rem) !important; }
+          .about-grid { gap: 38px !important; }
+          .about-grid > div:first-child > div:first-child { border-radius: 14px !important; }
+          .about-grid > div:first-child > div:last-child { right: 8px !important; bottom: -14px !important; padding: 12px 14px !important; }
+          .contact-details-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+          .card-hover { padding: 24px !important; }
+          .achievement-card { padding: 18px 20px !important; align-items: flex-start !important; }
+          .skills-grid { gap: 22px !important; }
+          .projects-grid { gap: 18px !important; }
+          .projects-grid > div { padding: 22px !important; }
+          .projects-grid h3 { font-size: 1.18rem !important; }
+          .timeline-line { left: 10px !important; }
+          .timeline-dot { left: 4px !important; }
+          .site-footer { padding: 26px 20px !important; flex-direction: column; align-items: flex-start !important; }
+          .site-footer > div:last-child { gap: 14px !important; flex-wrap: wrap; }
+          .contact-input { font-size: 16px; }
+        }
+
+        @media (max-width: 380px) {
+          .hero-section { padding-left: 16px !important; padding-right: 16px !important; }
+          .content-section { padding-left: 16px !important; padding-right: 16px !important; }
+          .hero-actions { flex-direction: column; }
+          .hero-actions button { width: 100%; }
+          .hero-stats { gap: 14px !important; }
+          .hero-stats > div { min-width: 74px; }
+          .hero-frame { height: 350px !important; }
+          .location-badge { right: 0 !important; }
+          .availability-badge { left: 0 !important; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          html { scroll-behavior: auto; }
+          *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+        }
       `}</style>
 
       {/* NAV */}
@@ -191,7 +274,17 @@ export default function Portfolio() {
           <img src={LOGO} alt="K" style={{ height: 38, width: 38, objectFit: "contain" }} />
           <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 900, fontSize: "1.1rem", color: "#e2e8f0" }}>Kelvin</span>
         </div>
-        <div style={{ display: "flex", gap: 4 }}>
+        <button
+          className={`menu-toggle${menuOpen ? " open" : ""}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={menuOpen}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <div className={`nav-links${menuOpen ? " open" : ""}`}>
           {NAV_LINKS.map(l => (
             <button key={l} className={`nav-link${active === l ? " active" : ""}`} onClick={() => scrollTo(l)}>{l}</button>
           ))}
@@ -199,12 +292,12 @@ export default function Portfolio() {
       </nav>
 
       {/* HERO */}
-      <section id="home" style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", padding: "120px 6% 80px", overflow: "hidden" }}>
+      <section id="home" className="hero-section" style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", padding: "120px 6% 80px", overflow: "hidden" }}>
         <div className="grid-bg" />
         <div className="orb" style={{ width: 500, height: 500, background: "rgba(59,130,246,0.18)", top: "-10%", right: "-10%" }} />
         <div className="orb" style={{ width: 400, height: 400, background: "rgba(168,85,247,0.12)", bottom: "0%", left: "-5%" }} />
         
-        <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
+        <div className="hero-grid" style={{ maxWidth: 1200, margin: "0 auto", width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
               <div style={{ height: 2, width: 36, background: "linear-gradient(90deg,#3b82f6,#a855f7)" }} />
@@ -218,11 +311,11 @@ export default function Portfolio() {
             <p style={{ color: "#94a3b8", fontSize: "1.05rem", lineHeight: 1.75, maxWidth: 480, marginBottom: 36 }}>
               Recent graduate in ICT & Software Engineering. Passionate about building elegant, scalable solutions and turning ideas into meaningful digital experiences.
             </p>
-            <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+            <div className="hero-actions" style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
               <button className="btn-primary" onClick={() => scrollTo("Projects")}>View Projects</button>
               <button className="btn-outline" onClick={() => scrollTo("Contact")}>Get In Touch</button>
             </div>
-            <div style={{ display: "flex", gap: 28, marginTop: 48 }}>
+            <div className="hero-stats" style={{ display: "flex", gap: 28, marginTop: 48 }}>
               {[["5+", "Projects Built"], ["3+", "Tech Stacks"], ["2", "Certifications"]].map(([num, label]) => (
                 <div key={label}>
                   <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2rem", fontWeight: 900, color: "#60a5fa" }}>{num}</div>
@@ -232,15 +325,15 @@ export default function Portfolio() {
             </div>
           </div>
           
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <div className="hero-float" style={{ position: "relative" }}>
-              <div style={{ width: 340, height: 440, borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%", background: "linear-gradient(135deg, rgba(59,130,246,0.3), rgba(168,85,247,0.3))", display: "flex", alignItems: "flex-end", justifyContent: "center", overflow: "hidden", border: "1.5px solid rgba(59,130,246,0.25)" }} className="glow">
+          <div className="hero-visual" style={{ display: "flex", justifyContent: "center" }}>
+            <div className="hero-float hero-frame-wrap" style={{ position: "relative" }}>
+              <div className="hero-frame" style={{ width: 340, height: 440, borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%", background: "linear-gradient(135deg, rgba(59,130,246,0.3), rgba(168,85,247,0.3))", display: "flex", alignItems: "flex-end", justifyContent: "center", overflow: "hidden", border: "1.5px solid rgba(59,130,246,0.25)" }} className="glow">
                 <img src={HERO_IMG} alt="Ted Kelvin" style={{ height: "95%", objectFit: "cover", objectPosition: "top", filter: "brightness(1.05)" }} />
               </div>
-              <div style={{ position: "absolute", top: -12, right: -12, background: "linear-gradient(135deg,#3b82f6,#a855f7)", borderRadius: 14, padding: "10px 16px", fontSize: "0.78rem", fontWeight: 700, color: "white" }}>
+              <div className="location-badge" style={{ position: "absolute", top: -12, right: -12, background: "linear-gradient(135deg,#3b82f6,#a855f7)", borderRadius: 14, padding: "10px 16px", fontSize: "0.78rem", fontWeight: 700, color: "white" }}>
                 📍 Nairobi, Kenya
               </div>
-              <div style={{ position: "absolute", bottom: 20, left: -20, background: "rgba(7,11,24,0.9)", border: "1px solid rgba(168,85,247,0.3)", borderRadius: 14, padding: "10px 16px", fontSize: "0.78rem", color: "#c4b5fd" }}>
+              <div className="availability-badge" style={{ position: "absolute", bottom: 20, left: -20, background: "rgba(7,11,24,0.9)", border: "1px solid rgba(168,85,247,0.3)", borderRadius: 14, padding: "10px 16px", fontSize: "0.78rem", color: "#c4b5fd" }}>
                 🚀 Open to opportunities
               </div>
             </div>
@@ -249,8 +342,8 @@ export default function Portfolio() {
       </section>
 
       {/* ABOUT */}
-      <section id="about" style={{ padding: "100px 6%", position: "relative" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+      <section id="about" className="content-section" style={{ padding: "100px 6%", position: "relative" }}>
+        <div className="about-grid" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
           <div style={{ position: "relative" }}>
             <div style={{ borderRadius: 24, overflow: "hidden", border: "1px solid rgba(59,130,246,0.2)" }} className="glow-sm">
               <img src={PORTRAIT} alt="Ted Kelvin" style={{ width: "100%", display: "block", objectFit: "cover" }} />
@@ -280,7 +373,7 @@ export default function Portfolio() {
                 <span key={t} className="tag">{t}</span>
               ))}
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+            <div className="contact-details-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
               {[["📧", "tedkelvin19@gmail.com"], ["📞", "0794512524"], ["🌍", "Nairobi, Kenya"], ["🗣️", "English & Kiswahili"]].map(([icon, val]) => (
                 <div key={val} style={{ display: "flex", alignItems: "center", gap: 10, color: "#94a3b8", fontSize: "0.88rem" }}>
                   <span>{icon}</span> {val}
@@ -292,7 +385,7 @@ export default function Portfolio() {
       </section>
 
       {/* EXPERIENCE */}
-      <section id="experience" style={{ padding: "100px 6%" }}>
+      <section id="experience" className="content-section" style={{ padding: "100px 6%" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <div style={{ color: "#60a5fa", fontSize: "0.82rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 12 }}>Work History</div>
@@ -351,7 +444,7 @@ export default function Portfolio() {
                 ))}
               </div>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginTop: 24 }}>
+            <div className="volunteer-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginTop: 24 }}>
               {[
                 { role: "Phone Formatting", type: "Volunteer Work", desc: "Assisted community members with formatting smartphones, ensuring safe data backup and secure data wiping." },
                 { role: "Software Installation", type: "Volunteer Work", desc: "Installed and configured software on community members' computers, ensuring compatibility and optimal performance." },
@@ -375,14 +468,14 @@ export default function Portfolio() {
       </section>
 
       {/* SKILLS */}
-      <section id="skills" style={{ padding: "100px 6%", background: "rgba(255,255,255,0.018)", position: "relative" }}>
+      <section id="skills" className="content-section" style={{ padding: "100px 6%", background: "rgba(255,255,255,0.018)", position: "relative" }}>
         <div className="orb" style={{ width: 400, height: 400, background: "rgba(236,72,153,0.08)", bottom: "0", right: "0" }} />
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <div style={{ color: "#60a5fa", fontSize: "0.82rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 12 }}>Expertise</div>
             <h2 className="section-title"><span className="gradient-text">Skills & Proficiency</span></h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "28px 60px", maxWidth: 800, margin: "0 auto" }}>
+          <div className="skills-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "28px 60px", maxWidth: 800, margin: "0 auto" }}>
             {SKILLS.map((s, i) => (
               <SkillBar key={s.name} name={s.name} level={s.level} delay={`${i * 0.1}s`} />
             ))}
@@ -391,13 +484,13 @@ export default function Portfolio() {
       </section>
 
       {/* PROJECTS */}
-      <section id="projects" style={{ padding: "100px 6%" }}>
+      <section id="projects" className="content-section" style={{ padding: "100px 6%" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <div style={{ color: "#60a5fa", fontSize: "0.82rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 12 }}>Work</div>
             <h2 className="section-title"><span className="gradient-text">Featured Projects</span></h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 28 }}>
+          <div className="projects-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 28 }}>
             {PROJECTS.map((p, i) => (
               <div key={p.title} className="card-hover" style={{
                 background: "rgba(255,255,255,0.03)",
@@ -438,7 +531,7 @@ export default function Portfolio() {
               </div>
             ))}
           </div>
-          <div style={{ marginTop: 48, background: "rgba(59,130,246,0.06)", border: "1px solid rgba(59,130,246,0.2)", borderRadius: 16, padding: "20px 28px", display: "flex", alignItems: "center", gap: 16 }}>
+          <div className="achievement-card" style={{ marginTop: 48, background: "rgba(59,130,246,0.06)", border: "1px solid rgba(59,130,246,0.2)", borderRadius: 16, padding: "20px 28px", display: "flex", alignItems: "center", gap: 16 }}>
             <span style={{ fontSize: "1.5rem" }}>🏆</span>
             <div>
               <div style={{ color: "#e2e8f0", fontWeight: 600, marginBottom: 4 }}>Certificate of Achievement</div>
@@ -449,7 +542,7 @@ export default function Portfolio() {
       </section>
 
       {/* EDUCATION */}
-      <section id="education" style={{ padding: "100px 6%", background: "rgba(255,255,255,0.018)" }}>
+      <section id="education" className="content-section" style={{ padding: "100px 6%", background: "rgba(255,255,255,0.018)" }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <div style={{ color: "#60a5fa", fontSize: "0.82rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 12 }}>Background</div>
@@ -477,14 +570,14 @@ export default function Portfolio() {
       </section>
 
       {/* CONTACT */}
-      <section id="contact" style={{ padding: "100px 6%", position: "relative" }}>
+      <section id="contact" className="content-section" style={{ padding: "100px 6%", position: "relative" }}>
         <div className="orb" style={{ width: 500, height: 500, background: "rgba(59,130,246,0.1)", top: "0", left: "-10%" }} />
         <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
           <div style={{ color: "#60a5fa", fontSize: "0.82rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 12 }}>Contact</div>
           <h2 className="section-title" style={{ marginBottom: 16 }}><span className="gradient-text">Let's Work Together</span></h2>
           <p style={{ color: "#94a3b8", marginBottom: 48, fontSize: "1rem" }}>Have a project in mind? I'd love to hear about it. Send me a message and I'll get back to you as soon as possible.</p>
           
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 20 }}>
+          <div className="form-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 20 }}>
             <input className="contact-input" type="text" name="name" placeholder="Your Name" value={form.name} onChange={handleChange} />
             <input className="contact-input" type="email" name="email" placeholder="Your Email" value={form.email} onChange={handleChange} />
           </div>
@@ -510,7 +603,7 @@ export default function Portfolio() {
       </section>
 
       {/* FOOTER */}
-      <footer style={{ borderTop: "1px solid rgba(59,130,246,0.1)", padding: "32px 6%", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
+      <footer className="site-footer" style={{ borderTop: "1px solid rgba(59,130,246,0.1)", padding: "32px 6%", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <img src={LOGO} alt="K" style={{ height: 28, objectFit: "contain" }} />
           <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: "#64748b", fontSize: "0.9rem" }}>Ted Kelvin Mutwiri</span>
