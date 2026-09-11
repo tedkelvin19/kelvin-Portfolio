@@ -99,6 +99,16 @@ function SkillBar({ name, level, delay }) {
 
 export default function Portfolio() {
   const [active, setActive] = useState("Home");
+  const [projects, setProjects] = useState(PROJECTS);
+  const [showAddProject, setShowAddProject] = useState(false);
+  const [newProject, setNewProject] = useState({
+	  title: "",
+	  desc: "",
+	  tech: "",
+	  icon: "💡",
+	  link: "",
+	  badge: "",
+	});
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -116,6 +126,30 @@ export default function Portfolio() {
     setSent(true);
     setTimeout(() => setSent(false), 4000);
   };
+  const handleNewProjectChange = (e) => {
+  setNewProject({ ...newProject, [e.target.name]: e.target.value });
+};
+
+const handleAddProject = () => {
+  if (!newProject.title.trim() || !newProject.desc.trim()) {
+    alert("Please add at least a title and a description.");
+    return;
+  }
+  const techList = newProject.tech.split(",").map((t) => t.trim()).filter(Boolean);
+  setProjects([
+    ...projects,
+    {
+      title: newProject.title.trim(),
+      desc: newProject.desc.trim(),
+      tech: techList.length ? techList : ["Custom"],
+      icon: newProject.icon.trim() || "💡",
+      link: newProject.link.trim() || undefined,
+      badge: newProject.badge.trim() || undefined,
+    },
+  ]);
+  setNewProject({ title: "", desc: "", tech: "", icon: "💡", link: "", badge: "" });
+  setShowAddProject(false);
+};
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -241,6 +275,45 @@ export default function Portfolio() {
           .site-footer > div:last-child { gap: 14px !important; flex-wrap: wrap; }
           .contact-input { font-size: 16px; }
         }
+        .add-project-card {
+		  width: 100%; text-align: center;
+		  background: rgba(255,255,255,0.02);
+		  border: 1.5px dashed rgba(96,165,250,0.35);
+		  border-radius: 20px; padding: 28px; min-height: 220px;
+		  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+		  cursor: pointer; font: inherit;
+		  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+		}
+		.add-project-card:hover { border-color: rgba(96,165,250,0.7); background: rgba(59,130,246,0.06); transform: translateY(-4px); }
+		.add-project-plus {
+		  width: 46px; height: 46px; border-radius: 50%;
+		  display: flex; align-items: center; justify-content: center;
+		  font-size: 1.5rem; line-height: 1;
+		  background: linear-gradient(135deg, rgba(59,130,246,0.18), rgba(168,85,247,0.18));
+		  border: 1px solid rgba(96,165,250,0.4); color: #93c5fd;
+		}
+		.modal-overlay {
+		  position: fixed; inset: 0; z-index: 200;
+		  background: rgba(4,7,16,0.72); backdrop-filter: blur(6px);
+		  display: flex; align-items: center; justify-content: center; padding: 24px;
+		  animation: overlayIn 0.2s ease;
+		}
+		@keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
+		.modal-card {
+		  width: 100%; max-width: 520px; max-height: 88vh; overflow-y: auto;
+		  background: #0b1120; border: 1px solid rgba(59,130,246,0.25);
+		  border-radius: 20px; padding: 32px; box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+		}
+		.modal-label { display: block; color: #93a4bf; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.03em; margin-bottom: 6px; }
+		.modal-close {
+		  width: 32px; height: 32px; border-radius: 8px;
+		  background: rgba(255,255,255,0.05); border: 1px solid rgba(148,163,184,0.2);
+		  color: #94a3b8; cursor: pointer; font-size: 0.9rem;
+		}
+		.modal-close:hover { color: #e2e8f0; border-color: rgba(96,165,250,0.4); }
+		@media (max-width: 700px) {
+		  .modal-card { padding: 24px; border-radius: 16px; }
+		}
 
         @media (max-width: 380px) {
           .hero-section { padding-left: 16px !important; padding-right: 16px !important; }
@@ -491,7 +564,7 @@ export default function Portfolio() {
             <h2 className="section-title"><span className="gradient-text">Featured Projects</span></h2>
           </div>
           <div className="projects-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 28 }}>
-            {PROJECTS.map((p, i) => (
+            {projects.map((p, i) => (
               <div key={p.title} className="card-hover" style={{
                 background: "rgba(255,255,255,0.03)",
                 border: `1px solid ${p.badge ? "rgba(168,85,247,0.35)" : "rgba(59,130,246,0.15)"}`,
@@ -530,6 +603,14 @@ export default function Portfolio() {
                 )}
               </div>
             ))}
+            <button
+  				className="card-hover add-project-card"
+  				onClick={() => setShowAddProject(true)}
+			>
+  				<span className="add-project-plus">+</span>
+  				<span style={{ fontWeight: 600, fontSize: "0.95rem", letterSpacing: "0.02em", color: "#93c5fd" }}>Add a Project</span>
+  				<span style={{ color: "#64748b", fontSize: "0.8rem" }}>Share what you've been building</span>
+			</button>
           </div>
           <div className="achievement-card" style={{ marginTop: 48, background: "rgba(59,130,246,0.06)", border: "1px solid rgba(59,130,246,0.2)", borderRadius: 16, padding: "20px 28px", display: "flex", alignItems: "center", gap: 16 }}>
             <span style={{ fontSize: "1.5rem" }}>🏆</span>
@@ -615,6 +696,57 @@ export default function Portfolio() {
           ))}
         </div>
       </footer>
+      {showAddProject && (
+		  <div className="modal-overlay" onClick={() => setShowAddProject(false)}>
+		    <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+		      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
+		        <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.4rem", fontWeight: 700, color: "#e2e8f0" }}>
+		          Add a Project
+		        </h3>
+		        <button className="modal-close" onClick={() => setShowAddProject(false)} aria-label="Close">✕</button>
+		      </div>
+
+		      <label className="modal-label">Title *</label>
+		      <input className="contact-input" type="text" name="title" placeholder="e.g. Recipe Finder"
+		        value={newProject.title} onChange={handleNewProjectChange} style={{ marginBottom: 16 }} />
+
+		      <label className="modal-label">Description *</label>
+		      <textarea className="contact-input" rows={3} name="desc" placeholder="What does it do, what problem does it solve..."
+		        value={newProject.desc} onChange={handleNewProjectChange} style={{ marginBottom: 16, resize: "none" }} />
+
+		      <div className="form-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
+		        <div>
+		          <label className="modal-label">Tech stack</label>
+		          <input className="contact-input" type="text" name="tech" placeholder="React, Flask, ..."
+		            value={newProject.tech} onChange={handleNewProjectChange} />
+		        </div>
+		        <div>
+		          <label className="modal-label">Icon (emoji)</label>
+		          <input className="contact-input" type="text" name="icon" placeholder="🚀" maxLength={4}
+		            value={newProject.icon} onChange={handleNewProjectChange} />
+		        </div>
+		      </div>
+
+		      <div className="form-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 28 }}>
+		        <div>
+		          <label className="modal-label">Live link</label>
+		          <input className="contact-input" type="text" name="link" placeholder="https://..."
+		            value={newProject.link} onChange={handleNewProjectChange} />
+		        </div>
+		        <div>
+		          <label className="modal-label">Badge</label>
+		          <input className="contact-input" type="text" name="badge" placeholder="New"
+		            value={newProject.badge} onChange={handleNewProjectChange} />
+		        </div>
+		      </div>
+
+		      <div style={{ display: "flex", gap: 12 }}>
+		        <button className="btn-outline" style={{ flex: 1 }} onClick={() => setShowAddProject(false)}>Cancel</button>
+		        <button className="btn-primary" style={{ flex: 1 }} onClick={handleAddProject}>Add Project</button>
+		      </div>
+		    </div>
+		  </div>
+)}
     </div>
   );
 }
